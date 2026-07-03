@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vadman - Ремонт техніки, мобільні аксесуари та професійне тонування вікон VDS в Україні та Молдові.">
+    <title>Vadman - Accessories, Service & VDS Window Tinting</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Glow Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo-block">
+                <svg viewBox="0 0 180 50" class="logo-svg">
+                    <g class="logo-chevrons" fill="currentColor">
+                        <polygon points="10,25 20,15 25,15 15,25 25,35 20,35" opacity="0.3" />
+                        <polygon points="18,25 28,15 33,15 23,25 33,35 28,35" opacity="0.5" />
+                        <polygon points="26,25 36,15 41,15 31,25 41,35 36,35" opacity="0.7" />
+                        <polygon points="34,25 44,15 49,15 39,25 49,35 44,35" opacity="0.9" />
+                        <polygon points="42,25 57,10 63,10 48,25 63,40 57,40" />
+                    </g>
+                    <text x="72" y="32" class="logo-text" font-family="'Outfit', sans-serif" font-weight="800" font-size="24" fill="currentColor">vadman</text>
+                </svg>
+                <span class="logo-slogan" data-i18n="logo_slogan">Качество в деталях, максимум защиты</span>
+            </a>
+
+            <!-- Language selector -->
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ua">UA</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <!-- Text contents -->
+                <div class="hero-text-block">
+                    <h1 class="hero-title" data-i18n="hero_title">Профессиональный ремонт и тонирование</h1>
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">Качество в деталях, максимум защиты. Быстрый сервис мобильной техники и профессиональная архитектурная тонировка плёнками VDS.</p>
+                    
+                    <!-- Stats Badge -->
+                    <div class="stats-badges">
+                        <div class="stat-badge">
+                            <span class="num">15+</span>
+                            <span class="lbl" data-i18n="badge_years">лет опыта</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="num">10k+</span>
+                            <span class="lbl" data-i18n="badge_clients">клиентов</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="num">7-10</span>
+                            <span class="lbl" data-i18n="badge_warranty">лет гарантии</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Widget (Inspired by arron.md) -->
+                <div class="calc-widget card">
+                    <div class="card-glow"></div>
+                    <h3 data-i18n="calc_title">Быстрый расчет цены</h3>
+                    <p class="calc-sub" data-i18n="calc_subtitle">Выберите категорию и тип услуги для оценки стоимости</p>
+                    
+                    <div class="form-group">
+                        <label data-i18n="calc_label_cat">Направление услуг</label>
+                        <select id="calc-category" class="form-control">
+                            <option value="accessories" data-i18n="opt_acc">Ремонт & Аксессуары</option>
+                            <option value="tinting" data-i18n="opt_vds">Тонирование окон VDS</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="calc_label_service">Тип услуги</label>
+                        <select id="calc-service" class="form-control">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+
+                    <button id="calc-submit-btn" class="btn btn-primary btn-block" data-i18n="calc_btn">Рассчитать цену</button>
+
+                    <!-- Calculator Output -->
+                    <div id="calc-output" class="calc-result-box hidden">
+                        <div class="result-divider"></div>
+                        <div class="result-row">
+                            <span class="result-label" data-i18n="result_price">Ориентировочная цена:</span>
+                            <span id="result-price-val" class="result-value">---</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label" data-i18n="result_time">Срок выполнения:</span>
+                            <span id="result-time-val" class="result-value-time">---</span>
+                        </div>
+                        <button id="calc-book-btn" class="btn btn-accent btn-block" data-i18n="calc_book_btn">Записаться на сервис</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Badges Section -->
+        <section class="trust-section">
+            <div class="container trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">🛡️</div>
+                    <h4 data-i18n="trust1_title">Официальная гарантия</h4>
+                    <p data-i18n="trust1_desc">До 10 лет на оконные пленки VDS и 4 дня на поклейку защитных стекол.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">⚡</div>
+                    <h4 data-i18n="trust2_title">Высокая скорость</h4>
+                    <p data-i18n="trust2_desc">Поклейка защитных стекол за 15 минут, тонировка окон за пару часов.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">🚚</div>
+                    <h4 data-i18n="trust3_title">Бесплатные выезды</h4>
+                    <p data-i18n="trust3_desc">Бесплатная доставка аксессуаров на дом и выезд замерщика окон VDS.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Division Switcher Tabs -->
+        <section class="tabs-section">
+            <div class="container text-center">
+                <div class="tabs-navigation">
+                    <button class="tab-nav-btn active" data-tab="accessories">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                        <span data-i18n="tab_accessories_text">Ремонт & Аксессуары</span>
+                    </button>
+                    <button class="tab-nav-btn" data-tab="tinting">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="9" y1="3" x2="9" y2="21"></line>
+                            <line x1="15" y1="3" x2="15" y2="21"></line>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="3" y1="15" x2="21" y2="15"></line>
+                        </svg>
+                        <span data-i18n="tab_tinting_text">Тонирование окон VDS</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Panel: Accessories & Service -->
+        <section id="panel-accessories" class="tab-panel active">
+            <div class="container">
+                <div class="panel-header text-center">
+                    <h2 data-i18n="acc_panel_title">Продажа Аксессуаров & Сервисный Центр</h2>
+                    <p data-i18n="acc_panel_desc">Мы заботимся о ваших смартфонах и планшетах. Только оригинальные комплектующие и сертифицированные аксессуары.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service card 1 -->
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <div class="service-tag hot" data-i18n="tag_popular">Популярно</div>
+                            <span class="service-icon-large">📱</span>
+                        </div>
+                        <div class="service-info">
+                            <h3 data-i18n="acc_card1_title">Защитные стекла & Поклейка</h3>
+                            <p data-i18n="acc_card1_desc">Качественные 3D/5D защитные стекла с олеофобным покрытием. Безупречная поклейка без пузырей и пыли.</p>
+                            <div class="service-meta">
+                                <span class="time">⏱️ 15 мин</span>
+                                <span class="warranty" data-i18n="acc_card1_warranty">🛡️ 4 дня гарантии</span>
+                            </div>
+                            <button class="btn btn-secondary btn-block btn-open-modal" data-service-name="Поклейка защитного стекла" data-i18n="btn_order">Заказать</button>
+                        </div>
+                    </div>
+
+                    <!-- Service card 2 -->
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <span class="service-icon-large">🛠️</span>
+                        </div>
+                        <div class="service-info">
+                            <h3 data-i18n="acc_card2_title">Замена экранов & Аккумуляторов</h3>
+                            <p data-i18n="acc_card2_desc">Профессиональная замена разбитых дисплейных модулей, сенсорных стекол и изношенных батарей на телефонах и планшетах.</p>
+                            <div class="service-meta">
+                                <span class="time">⏱️ от 30 мин</span>
+                                <span class="warranty" data-i18n="acc_card2_warranty">🛡️ Гарантия на детали</span>
+                            </div>
+                            <button class="btn btn-secondary btn-block btn-open-modal" data-service-name="Ремонт экрана/батареи" data-i18n="btn_order">Заказать</button>
+                        </div>
+                    </div>
+
+                    <!-- Service card 3 -->
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <span class="service-icon-large">🔌</span>
+                        </div>
+                        <div class="service-info">
+                            <h3 data-i18n="acc_card3_title">Зарядки, Кабели & Чехлы</h3>
+                            <p data-i18n="acc_card3_desc">Качественные аксессуары для питания ваших гаджетов, противоударные и стильные чехлы с доставкой.</p>
+                            <div class="service-meta">
+                                <span class="time" data-i18n="acc_card3_delivery">⏱️ Доставка в день заказа</span>
+                                <span class="warranty" data-i18n="acc_card3_free">🚚 Бесплатно на дом</span>
+                            </div>
+                            <button class="btn btn-secondary btn-block btn-open-modal" data-service-name="Заказ аксессуаров" data-i18n="btn_order">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Workflow Section (Inspired by arron.md) -->
+                <div class="workflow-section">
+                    <h3 class="text-center section-title" data-i18n="workflow_title">Как мы работаем</h3>
+                    <div class="workflow-grid">
+                        <div class="workflow-step">
+                            <span class="step-num">1</span>
+                            <h4 data-i18n="step1_title">Заявка</h4>
+                            <p data-i18n="step1_desc">Оставьте заявку на сайте или позвоните нам.</p>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-num">2</span>
+                            <h4 data-i18n="step2_title">Согласование</h4>
+                            <p data-i18n="step2_desc">Менеджер уточняет детали, цену и сроки работы.</p>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-num">3</span>
+                            <h4 data-i18n="step3_title">Выполнение</h4>
+                            <p data-i18n="step3_desc">Мастера клеят стекло или чинят устройство.</p>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-num">4</span>
+                            <h4 data-i18n="step4_title">Готово & Гарантия</h4>
+                            <p data-i18n="step4_desc">Забирайте устройство с гарантией качества.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contacts Accessories -->
+                <div class="contact-area card">
+                    <h3 data-i18n="contact_title_acc">Контакты отдела аксессуаров и ремонта</h3>
+                    <div class="contact-grid">
+                        <div class="contact-card-sub">
+                            <span class="c-icon">📞</span>
+                            <h5 data-i18n="label_ukraine">Украина (Одесса)</h5>
+                            <a href="tel:+380983331852" class="phone-link">+38 (098) 333-18-52</a>
+                            <a href="tel:+380505930072" class="phone-link-sub">+38 (050) 593-00-72 (Ремонт)</a>
+                        </div>
+                        <div class="contact-card-sub highlight-c">
+                            <span class="c-icon">🇲🇩</span>
+                            <h5 data-i18n="label_moldova">Молдова (Кишинев)</h5>
+                            <a href="tel:+37368086112" class="phone-link">+373 680-86-112</a>
+                            <p class="desc" data-i18n="moldova_desc">Наш филиал по подбору мобильных аксессуаров.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="messengers-block">
+                        <h4 data-i18n="label_chats">Свяжитесь в мессенджерах</h4>
+                        <div class="buttons-row">
+                            <a href="viber://chat?number=%2B380983331852" class="btn btn-viber">Viber</a>
+                            <a href="https://t.me/VadmanUkraineOficial" target="_blank" class="btn btn-telegram">Telegram</a>
+                            <a href="https://www.instagram.com/vadman__ukraine/" target="_blank" class="btn btn-instagram">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Panel: VDS Tinting -->
+        <section id="panel-tinting" class="tab-panel">
+            <div class="container">
+                <div class="panel-header text-center">
+                    <h2 data-i18n="vds_panel_title">Профессиональная тонировка окон пленками VDS</h2>
+                    <p data-i18n="vds_panel_desc">Превратите ваши окна в эффективный щит от жары, ультрафиолета и взломов. Архитектурная тонировка зданий в Одессе.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service card 1 -->
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <div class="service-tag hot" data-i18n="tag_hot_season">Сезонный Хит</div>
+                            <span class="service-icon-large">☀️</span>
+                        </div>
+                        <div class="service-info">
+                            <h3 data-i18n="vds_card1_title">Солнцезащитная пленка</h3>
+                            <p data-i18n="vds_card1_desc">Блокировка до 80% тепла и 99% вредного ультрафиолета. Экономия на кондиционировании и защита интерьера от выгорания.</p>
+                            <div class="service-meta">
+                                <span class="time">⏱️ от 2 часов</span>
+                                <span class="warranty">🛡️ 7-10 лет гарантии</span>
+                            </div>
+                            <button class="btn btn-secondary btn-block btn-open-modal" data-service-name="Солнцезащитная тонировка VDS" data-i18n="btn_order">Заказать</button>
+                        </div>
+                    </div>
+
+                    <!-- Service card 2 -->
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <span class="service-icon-large">🪞</span>
+                        </div>
+                        <div class="service-info">
+                            <h3 data-i18n="vds_card2_title">Зеркальная тонировка</h3>
+                            <p data-i18n="vds_card2_desc">Односторонняя видимость для защиты вашей личной жизни и офисных пространств от посторонних глаз с улицы.</p>
+                            <div class="service-meta">
+                                <span class="time">⏱️ от 2 часов</span>
+                                <span class="warranty">🛡️ 7-10 лет гарантии</span>
+                            </div>
+                            <button class="btn btn-secondary btn-block btn-open-modal" data-service-name="Зеркальная тонировка VDS" data-i18n="btn_order">Заказать</button>
+                        </div>
+                    </div>
+
+                    <!-- Service card 3 -->
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <span class="service-icon-large">🔒</span>
+                        </div>
+                        <div class="service-info">
+                            <h3 data-i18n="vds_card3_title">Ударопрочные пленки (Бронь)</h3>
+                            <p data-i18n="vds_card3_desc">Усиление стекол зданий от случайных ударов, взрывной волны, брошенных камней и попыток проникновения грабителей.</p>
+                            <div class="service-meta">
+                                <span class="time">⏱️ от 3 часов</span>
+                                <span class="warranty">🛡️ Защита А1, А2, А3</span>
+                            </div>
+                            <button class="btn btn-secondary btn-block btn-open-modal" data-service-name="Ударопрочное бронирование VDS" data-i18n="btn_order">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VDS Benefits -->
+                <div class="vds-benefits-box card">
+                    <h3 class="text-center" data-i18n="vds_benefits_title">Почему выбирают тонировку VDS?</h3>
+                    <ul class="benefits-list">
+                        <li>
+                            <span class="bullet">✓</span>
+                            <div>
+                                <strong data-i18n="vds_b1_title">Долговечность и качество</strong>
+                                <span class="desc" data-i18n="vds_b1_desc">Пленки не выгорают, не идут пузырями и не теряют защитные свойства годами.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="bullet">✓</span>
+                            <div>
+                                <strong data-i18n="vds_b2_title">Комфортный микроклимат</strong>
+                                <span class="desc" data-i18n="vds_b2_desc">Эффективное снижение температуры в помещениях летом и сохранение тепла зимой.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="bullet">✓</span>
+                            <div>
+                                <strong data-i18n="vds_b3_title">Официальный сервис</strong>
+                                <span class="desc" data-i18n="vds_b3_desc">Мастера проводят точные замеры и качественный монтаж. Даем официальную гарантию.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contacts VDS -->
+                <div class="contact-area card">
+                    <h3 data-i18n="contact_title_vds">Контакты службы VDS тонирования</h3>
+                    <div class="contact-grid">
+                        <div class="contact-card-sub">
+                            <span class="c-icon">📞</span>
+                            <h5 data-i18n="label_vds_phone1">Линия поддержки 1</h5>
+                            <a href="tel:+380638331313" class="phone-link">+38 (093) 055-50-55</a>
+                        </div>
+                        <div class="contact-card-sub">
+                            <span class="c-icon">📞</span>
+                            <h5 data-i18n="label_vds_phone2">Линия поддержки 2</h5>
+                            <a href="tel:+380978331313" class="phone-link">+38 (077) 057-07-77</a>
+                        </div>
+                    </div>
+                    
+                    <div class="messengers-block">
+                        <h4 data-i18n="label_chats">Свяжитесь в мессенджерах</h4>
+                        <div class="buttons-row">
+                            <a href="https://t.me/VDS_Vadman_Ukr" target="_blank" class="btn btn-telegram">Telegram VDS Channel</a>
+                            <a href="https://www.instagram.com/p/C9zGRXpoRxa/?img_index=1" target="_blank" class="btn btn-instagram">Instagram VDS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQs Section (Inspired by arron.md Accordions) -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="text-center section-title" data-i18n="faq_title">Часто задаваемые вопросы</h2>
+                
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="faq1_q">Сколько времени занимает тонировка окон?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq1_a">В среднем поклейка пленки на стандартное окно занимает около 40-60 минут. Точное время зависит от общей площади стекол и сложности доступа к окнам.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="faq2_q">Какая гарантия предоставляется на защитные стекла для телефонов?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq2_a">Мы даем гарантию 4 дня на качество самой поклейки (отсутствие вздутий, пузырей воздуха и отслаивания краев). Физическое разбитие защитного стекла в результате удара или падения не является гарантийным случаем.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="faq3_q">Есть ли у вас доставка?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq3_a">Да! Мы осуществляем абсолютно бесплатную доставку мобильных аксессуаров, а также готовы забрать устройство на ремонт и вернуть его обратно полностью отремонтированным.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="faq4_q">Вы работаете в Молдове?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq4_a">Да, у нас есть представительство в Республике Молдова для заказа и подбора качественных мобильных аксессуаров. Связаться с филиалом в Молдове можно по телефону +373 680-86-112.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="container text-center">
+                <h2 class="section-title" data-i18n="map_title">Где мы находимся</h2>
+                <p data-i18n="map_subtitle">Ждем вас в наших филиалах в Одессе и Молдове</p>
+                
+                <div class="map-grid">
+                    <div class="map-card card">
+                        <h4 data-i18n="map_ua_title">Одесса, Украина</h4>
+                        <p class="addr" data-i18n="map_ua_addr">ул. Преображенская / Ришельевская</p>
+                        <div class="map-placeholder">
+                            <!-- Standard responsive map iframe mockup with stylized design -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d171727.6749971933!2d30.589886369018593!3d46.46012479426915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c6318a0b864f43%3A0x12a92f286ec45ffc!2zT2Rlc3NhLCBPZGVzc2EgT2JsYXN0LCBVa3JhaW5l!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <div class="map-card card">
+                        <h4 data-i18n="map_md_title">Кишинев, Молдова</h4>
+                        <p class="addr" data-i18n="map_md_addr">ул. М. Г. Бэнулеску-Бодони</p>
+                        <div class="map-placeholder">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d87023.75470438183!2d28.784534125867087!3d47.02287114170363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cbd60ab0357f1d%3A0x18128d98d249d3e8!2zQ2hpyJlpbsSDdSwgTW9sZG92Y!5e0!3m2!1sen!2s!4v1700000000001!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 VADMAN. <span data-i18n="footer_rights">Все права защищены.</span></p>
+            <p class="footer-note" data-i18n="footer_note">Работаем в Украине и Республике Молдова.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal Dialog -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content card">
+            <button class="modal-close">&times;</button>
+            <h3 data-i18n="modal_title">Оставить заявку</h3>
+            <p id="modal-service-title" class="modal-sub">Сервисная консультация</p>
+            
+            <form id="booking-form">
+                <div class="form-group">
+                    <label data-i18n="modal_name">Ваше имя</label>
+                    <input type="text" id="client-name" class="form-control" placeholder="Имя" required>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="modal_phone">Номер телефона</label>
+                    <input type="tel" id="client-phone" class="form-control" placeholder="+38 / +373" required>
+                </div>
+                <button type="submit" class="btn btn-accent btn-block" data-i18n="modal_submit">Отправить заявку</button>
+            </form>
+
+            <div id="modal-success" class="modal-success-box hidden">
+                <span class="success-icon">✓</span>
+                <h4 data-i18n="success_title">Заявка принята!</h4>
+                <p data-i18n="success_desc">Мы свяжемся с вами в течение 5 минут для подтверждения.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Messengers Widget -->
+    <div class="floating-messengers">
+        <a href="viber://chat?number=%2B380983331852" class="floater viber" title="Viber">V</a>
+        <a href="https://t.me/VadmanUkraineOficial" target="_blank" class="floater telegram" title="Telegram">T</a>
+    </div>
+
+    <!-- Floating Callback Widget -->
+    <div class="floating-callback btn-open-modal" data-service-name="Обратный звонок с сайта">
+        <span class="pulse-ring"></span>
+        <span class="call-icon">📞</span>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        const translations = {
+            ua: {
+                logo_slogan: "Якість у деталях, максимум захисту",
+                hero_title: "Професійний ремонт та тонування",
+                hero_subtitle: "Якість у деталях, максимум захисту. Швидкий сервіс мобільної техніки та професійне архітектурне тонування вікон плівками VDS.",
+                badge_years: "років досвіду",
+                badge_clients: "клієнтів",
+                badge_warranty: "років гарантії",
+                calc_title: "Швидкий розрахунок ціни",
+                calc_subtitle: "Оберіть категорію та тип послуги для оцінки вартості",
+                calc_label_cat: "Напрямок послуг",
+                opt_acc: "Ремонт & Аксесуари",
+                opt_vds: "Тонування вікон VDS",
+                calc_label_service: "Тип послуги",
+                calc_btn: "Розрахувати ціну",
+                result_price: "Орієнтовна ціна:",
+                result_time: "Термін виконання:",
+                calc_book_btn: "Записатися на сервіс",
+                trust1_title: "Офіційна гарантія",
+                trust1_desc: "До 10 років на віконні плівки VDS та 4 дні на поклейку захисного скла.",
+                trust2_title: "Висока швидкість",
+                trust2_desc: "Поклейка захисного скла за 15 хвилин, тонування вікон за пару годин.",
+                trust3_title: "Безкоштовні виїзди",
+                trust3_desc: "Безкоштовна доставка аксесуарів додому та виїзд замірника вікон VDS.",
+                tab_accessories_text: "Ремонт & Аксесуари",
+                tab_tinting_text: "Тонування вікон VDS",
+                acc_panel_title: "Продаж Аксесуарів & Сервісний Центр",
+                acc_panel_desc: "Ми дбаємо про ваші смартфони та планшети. Тільки оригінальні комплектуючі та сертифіковані аксесуари.",
+                tag_popular: "Популярно",
+                acc_card1_title: "Захисне скло & Поклейка",
+                acc_card1_desc: "Якісне 3D/5D захисне скло з олеофобним покриттям. Бездоганна поклейка без бульбашок та пилу.",
+                acc_card1_warranty: "🛡️ 4 дні гарантії",
+                acc_card2_title: "Заміна екранів & Акумуляторів",
+                acc_card2_desc: "Професійна заміна розбитих дисплейних модулів, сенсорного скла та зношених батарей на телефонах та планшетах.",
+                acc_card2_warranty: "🛡️ Гарантія на деталі",
+                acc_card3_title: "Зарядки, Кабелі & Чохли",
+                acc_card3_desc: "Якісні аксесуари для живлення ваших гаджетів, протиударні та стильні чохли з доставкою.",
+                acc_card3_delivery: "⏱️ Доставка в день замовлення",
+                acc_card3_free: "🚚 Безкоштовно додому",
+                btn_order: "Замовити",
+                workflow_title: "Як ми працюємо",
+                step1_title: "Заявка",
+                step1_desc: "Залиште заявку на сайті або зателефонуйте нам.",
+                step2_title: "Узгодження",
+                step2_desc: "Менеджер уточнює деталі, ціну та терміни роботи.",
+                step3_title: "Виконання",
+                step3_desc: "Майстри клеять скло або лагодять пристрій.",
+                step4_title: "Готово & Гарантія",
+                step4_desc: "Забирайте пристрій з гарантією якості.",
+                contact_title_acc: "Контакти відділу аксесуарів та ремонту",
+                label_ukraine: "Україна (Одеса)",
+                label_moldova: "Молдова (Кишинів)",
+                moldova_desc: "Наш філіал з підбору мобільних аксесуарів.",
+                label_chats: "Зв'яжіться в месенджерах",
+                vds_panel_title: "Професійне тонування вікон плівками VDS",
+                vds_panel_desc: "Перетворіть ваші вікна на ефективний щит від спеки, ультрафіолету та злому. Архітектурне тонування будівель в Одесі.",
+                tag_hot_season: "Сезонний Хіт",
+                vds_card1_title: "Сонцезахисна плівка VDS",
+                vds_card1_desc: "Блокування до 80% тепла та 99% шкідливого ультрафіолету. Економіка на кондиціонуванні та захист інтер'єру від вигоряння.",
+                vds_card2_title: "Дзеркальне тонування VDS",
+                vds_card2_desc: "Одностороння видимість для захисту вашого приватного життя та офісних просторів від сторонніх очей з вулиці.",
+                vds_card3_title: "Удароміцні плівки VDS",
+                vds_card3_desc: "Посилення скла будівель від випадкових ударів, вибухової хвилі, кинутого каміння та спроб проникнення грабіжників.",
+                vds_benefits_title: "Чому обирають тонування VDS?",
+                vds_b1_title: "Довговічність та якість",
+                vds_b1_desc: "Плівки не вигорають, не йдуть бульбашками та не втрачають захисних властивостей роками.",
+                vds_b2_title: "Комфортний мікроклімат",
+                vds_b2_desc: "Ефективне зниження температури у приміщеннях влітку та збереження тепла взим.",
+                vds_b3_title: "Офіційний сервіс",
+                vds_b3_desc: "Майстри проводять точні заміри та якісний монтаж. Даємо офіційну гарантію.",
+                contact_title_vds: "Контакти служби VDS тонування",
+                label_vds_phone1: "Лінія підтримки 1",
+                label_vds_phone2: "Лінія підтримки 2",
+                faq_title: "Часті питання",
+                faq1_q: "Скільки часу займає тонування вікон?",
+                faq1_a: "В середньому поклейка плівки на стандартне вікно займає близько 40-60 хвилин. Точний час залежить від загальної площі скла та складності доступу до вікон.",
+                faq2_q: "Яка гарантія надається на захисне скло для телефонів?",
+                faq2_a: "Ми даємо гарантію 4 дні на якість самої поклейки (відсутність здуття, бульбашок повітря та відшаровування країв). Фізичне розбиття захисного скла в результаті удару або падіння не є гарантійним випадком.",
+                faq3_q: "Чи є у вас доставка?",
+                faq3_a: "Так! Ми здійснюємо абсолютно безкоштовну доставку мобільних аксесуарів, а також готові забрати пристрій на ремонт і повернути його повністю відремонтованим.",
+                faq4_q: "Ви працюєте в Молдові?",
+                faq4_a: "Так, у нас є представництво в Республіці Молдова для замовлення та підбору якісних мобільних аксесуарів. Зв'язатися з філією в Молдові можна за телефоном +373 680-86-112.",
+                map_title: "Де ми знаходимося",
+                map_subtitle: "Чекаємо на вас у наших філіях в Одесі та Молдові",
+                map_ua_title: "Одеса, Україна",
+                map_ua_addr: "вул. Преображенська / Рішельєвська",
+                map_md_title: "Кишинів, Молдова",
+                map_md_addr: "вул. М. Г. Бенулеску-Бодоні",
+                footer_rights: "Усі права захищені.",
+                footer_note: "Працюємо в Україні та Республіці Молдова.",
+                modal_title: "Залишити заявку",
+                modal_name: "Ваше ім'я",
+                modal_phone: "Номер телефону",
+                modal_submit: "Надіслати заявку",
+                success_title: "Заявку прийнято!",
+                success_desc: "Ми зв'яжемося з вами протягом 5 хвилин для підтвердження."
+            },
+            en: {
+                logo_slogan: "Quality in details, maximum protection",
+                hero_title: "Professional Repairs & Window Tinting",
+                hero_subtitle: "Quality in details, maximum protection. Fast repair service for mobile devices and premium architectural window tinting with VDS films.",
+                badge_years: "years experience",
+                badge_clients: "satisfied clients",
+                badge_warranty: "years warranty",
+                calc_title: "Quick Price Estimator",
+                calc_subtitle: "Choose service category and type to estimate your repair or application cost",
+                calc_label_cat: "Service direction",
+                opt_acc: "Repairs & Accessories",
+                opt_vds: "VDS Window Tinting",
+                calc_label_service: "Service type",
+                calc_btn: "Calculate Price",
+                result_price: "Estimated price:",
+                result_time: "Execution time:",
+                calc_book_btn: "Book Service",
+                trust1_title: "Official Warranty",
+                trust1_desc: "Up to 10 years for VDS window films and 4 days warranty on protective glass application.",
+                trust2_title: "High Speed",
+                trust2_desc: "Protective glass installation in 15 minutes, window tinting in just a few hours.",
+                trust3_title: "Free On-Site Visits",
+                trust3_desc: "Free accessories delivery to your home and free specialist visit for window measurements.",
+                tab_accessories_text: "Repairs & Accessories",
+                tab_tinting_text: "VDS Window Tinting",
+                acc_panel_title: "Accessories Sale & Service Center",
+                acc_panel_desc: "We take care of your smartphones and tablets. Only original parts and certified accessories.",
+                tag_popular: "Popular",
+                acc_card1_title: "Protective Glass & Application",
+                acc_card1_desc: "Premium 3D/5D protective glasses with high-grade oleophobic coating. Flawless installation without bubbles or dust.",
+                acc_card1_warranty: "🛡️ 4 days warranty",
+                acc_card2_title: "Screen & Battery Replacement",
+                acc_card2_desc: "Professional replacement of broken display modules, touchscreen glasses, and worn batteries on phones and tablets.",
+                acc_card2_warranty: "🛡️ Parts warranty",
+                acc_card3_title: "Chargers, Cables & Cases",
+                acc_card3_desc: "High-quality accessories for charging your devices, shockproof and stylish cases with delivery.",
+                acc_card3_delivery: "⏱️ Delivery on the same day",
+                acc_card3_free: "🚚 Free home delivery",
+                btn_order: "Order",
+                workflow_title: "How We Work",
+                step1_title: "Request",
+                step1_desc: "Submit a request on the website or call us directly.",
+                step2_title: "Confirmation",
+                step2_desc: "Our operator clarifies details, pricing, and execution time.",
+                step3_title: "Service Execution",
+                step3_desc: "Technicians apply protective glass or perform repair.",
+                step4_title: "Done & Warranty",
+                step4_desc: "Get your fully functional device with a quality warranty.",
+                contact_title_acc: "Accessories & Repair Department Contacts",
+                label_ukraine: "Ukraine (Odesa)",
+                label_moldova: "Moldova (Chisinau)",
+                moldova_desc: "Our branch for mobile accessories selection.",
+                label_chats: "Get in touch on chat",
+                vds_panel_title: "VDS Professional Window Tinting Services",
+                vds_panel_desc: "Turn your windows into an effective shield against heat, UV rays, and break-ins. Architectural tinting in Odesa.",
+                tag_hot_season: "Seasonal Hot",
+                vds_card1_title: "VDS Sun-Protection Film",
+                vds_card1_desc: "Up to 80% solar heat blockage and 99% UV blockage. AC bills savings and interior fading protection.",
+                vds_card2_title: "VDS Mirror Tinting",
+                vds_card2_desc: "One-way visibility to protect your privacy and office spaces from outside views from the street.",
+                vds_card3_title: "VDS Impact-Resistant Films",
+                vds_card3_desc: "Window armoring against impact, flying glass shards, shockwaves, and burglary attempts.",
+                vds_benefits_title: "Why Choose VDS Window Tinting?",
+                vds_b1_title: "Durability & quality",
+                vds_b1_desc: "Films do not fade, bubble, or lose their protective properties for years.",
+                vds_b2_title: "Comfortable microclimate",
+                vds_b2_desc: "Effective cooling of rooms in summer and heat retention in winter.",
+                vds_b3_title: "Official service",
+                vds_b3_desc: "Technicians conduct precise measurements and expert application. We give a warranty.",
+                contact_title_vds: "VDS Tinting Service Contacts",
+                label_vds_phone1: "Support line 1",
+                label_vds_phone2: "Support line 2",
+                faq_title: "Frequently Asked Questions",
+                faq1_q: "How long does window tinting take?",
+                faq1_a: "On average, applying film to a standard window pane takes 40-60 minutes. The exact duration depends on glass area and access difficulty.",
+                faq2_q: "What warranty is provided for phone screen protectors?",
+                faq2_a: "We give a 4-day warranty on application quality (no bubbles, peeling edges, or lift-offs). Shuttering or cracking of the protective glass due to fall is not covered.",
+                faq3_q: "Do you offer delivery?",
+                faq3_a: "Yes! We provide completely free home delivery of mobile accessories and can pick up your device for repairs and return it fully fixed.",
+                faq4_q: "Do you work in Moldova?",
+                faq4_a: "Yes, we have a branch in the Republic of Moldova for mobile accessories orders. You can contact Chisinau office at +373 680-86-112.",
+                map_title: "Our Locations",
+                map_subtitle: "We are waiting for you in Chisinau and Odesa",
+                map_ua_title: "Odesa, Ukraine",
+                map_ua_addr: "Preobrazhenska / Rishelyevska str.",
+                map_md_title: "Chisinau, Moldova",
+                map_md_addr: "M. G. Banulescu-Bodoni str.",
+                footer_rights: "All rights reserved.",
+                footer_note: "Operating in Ukraine and the Republic of Moldova.",
+                modal_title: "Submit Request",
+                modal_name: "Your Name",
+                modal_phone: "Phone Number",
+                modal_submit: "Send Request",
+                success_title: "Request Received!",
+                success_desc: "We will contact you within 5 minutes to confirm details."
+            }
+        };
+
+        const calcData = {
+            accessories: [
+                { id: "glass", ua: "Поклейка захисного скла", en: "Protective glass installation", price: { ua: "від 150 грн", en: "from $5" }, time: { ua: "15 хвилин", en: "15 minutes" } },
+                { id: "screen", ua: "Заміна екрана / дисплея", en: "Screen / display replacement", price: { ua: "від 800 грн", en: "from $25" }, time: { ua: "1-2 години", en: "1-2 hours" } },
+                { id: "battery", ua: "Заміна акумулятора (АКБ)", en: "Battery replacement", price: { ua: "від 400 грн", en: "from $15" }, time: { ua: "30 хвилин", en: "30 minutes" } },
+                { id: "board", ua: "Ремонт материнської плати", en: "Motherboard repair", price: { ua: "від 1200 грн", en: "from $40" }, time: { ua: "1-3 дні", en: "1-3 days" } }
+            ],
+            tinting: [
+                { id: "sun", ua: "Сонцезахисна плівка VDS", en: "VDS Sun-protection film", price: { ua: "від 350 грн/м²", en: "from $10/m²" }, time: { ua: "від 2 годин", en: "from 2 hours" } },
+                { id: "mirror", ua: "Дзеркальна плівка VDS", en: "VDS Mirror film", price: { ua: "від 400 грн/м²", en: "from $12/m²" }, time: { ua: "від 2 годин", en: "from 2 hours" } },
+                { id: "impact", ua: "Удароміцна плівка VDS (Броня)", en: "VDS Impact-resistant film (Armor)", price: { ua: "від 500 грн/м²", en: "from $15/m²" }, time: { ua: "від 3 годин", en: "from 3 hours" } },
+                { id: "full", ua: "Комплексне тонування будівлі", en: "Full building window tinting", price: { ua: "Індивідуальний розрахунок", en: "Individual quote" }, time: { ua: "договірний", en: "contractual" } }
+            ]
+        };
+
+        // Language Switcher Logic
+        const langBtns = document.querySelectorAll('.lang-btn');
+        let currentLang = 'ua';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.setAttribute('lang', lang);
+            
+            // Set active class on language button
+            langBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Translate elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            // Refresh calculator options
+            populateServices();
+            updateCalculatedPrice();
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        // Populate Services dropdown in Calculator
+        const catSelect = document.getElementById('calc-category');
+        const serviceSelect = document.getElementById('calc-service');
+
+        function populateServices() {
+            const cat = catSelect.value;
+            const services = calcData[cat];
+            serviceSelect.innerHTML = '';
+            
+            services.forEach(item => {
+                const opt = document.createElement('option');
+                opt.value = item.id;
+                opt.innerText = item[currentLang];
+                serviceSelect.appendChild(opt);
+            });
+        }
+
+        catSelect.addEventListener('change', populateServices);
+
+        // Calculate functionality
+        const submitBtn = document.getElementById('calc-submit-btn');
+        const outputBox = document.getElementById('calc-output');
+        const priceVal = document.getElementById('result-price-val');
+        const timeVal = document.getElementById('result-time-val');
+
+        function updateCalculatedPrice() {
+            if (outputBox.classList.contains('hidden')) return;
+            const cat = catSelect.value;
+            const serviceId = serviceSelect.value;
+            const services = calcData[cat];
+            const selected = services.find(item => item.id === serviceId);
+
+            if (selected) {
+                priceVal.innerText = selected.price[currentLang];
+                timeVal.innerText = selected.time[currentLang];
+            }
+        }
+
+        submitBtn.addEventListener('click', () => {
+            outputBox.classList.remove('hidden');
+            updateCalculatedPrice();
+        });
+
+        // Tab switcher logic
+        const tabNavBtns = document.querySelectorAll('.tab-nav-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabNavBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.getAttribute('data-tab');
+                
+                tabNavBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                tabPanels.forEach(panel => {
+                    if (panel.id === `panel-${tab}`) {
+                        panel.classList.add('active');
+                    } else {
+                        panel.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Modal booking logic
+        const modal = document.getElementById('booking-modal');
+        const modalClose = document.querySelector('.modal-close');
+        const openModalBtns = document.querySelectorAll('.btn-open-modal');
+        const bookBtn = document.getElementById('calc-book-btn');
+        const bookingForm = document.getElementById('booking-form');
+        const successBox = document.getElementById('modal-success');
+        const serviceTitleEl = document.getElementById('modal-service-title');
+
+        function openModal(serviceName) {
+            modal.classList.add('active');
+            serviceTitleEl.innerText = serviceName;
+            bookingForm.classList.remove('hidden');
+            successBox.classList.add('hidden');
+        }
+
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const name = btn.getAttribute('data-service-name') || "Заказ с сайта";
+                openModal(name);
+            });
+        });
+
+        bookBtn.addEventListener('click', () => {
+            const cat = catSelect.value;
+            const serviceId = serviceSelect.value;
+            const services = calcData[cat];
+            const selected = services.find(item => item.id === serviceId);
+            const label = selected ? selected[currentLang] : "Заказ услуги";
+            openModal(label);
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Mock submission
+            bookingForm.classList.add('hidden');
+            successBox.classList.remove('hidden');
+        });
+
+        // FAQ accordion logic
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentNode;
+                const wasActive = item.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                // Toggle current
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Init
+        changeLanguage('ua');
+    </script>
+</body>
+</html>
