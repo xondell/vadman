@@ -2,9 +2,9 @@
 
 # 🛠️ Vadman
 
-### Repair, accessories & professional VDS window tinting
+### Device repair, accessories & professional VDS window tinting
 
-A responsive bilingual service website for **Vadman**, combining mobile-device repair, accessories, and architectural window tinting in one fast static experience.
+A lightweight bilingual business website combining mobile-device services and architectural window tinting in one responsive static experience.
 
 ![HTML5](https://img.shields.io/badge/HTML5-static-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-responsive-1572B6?logo=css3&logoColor=white)
@@ -15,50 +15,47 @@ A responsive bilingual service website for **Vadman**, combining mobile-device r
 
 ---
 
-## ✨ Overview
+## Service directions
 
-Vadman is a lightweight business landing page designed around two service directions:
+### 📱 Repair & accessories
+- protective-glass installation;
+- screen / battery-related service presentation;
+- chargers, cables and cases;
+- quick path to a service request.
 
-- 📱 **Device repair & mobile accessories** — protective glass installation, screen and battery replacement, chargers, cables and cases.
-- 🪟 **VDS window tinting** — professional architectural film installation and related services.
+### 🪟 VDS window tinting
+- architectural film services;
+- tinting options;
+- price-oriented service discovery;
+- conversion to contact / booking.
 
-The site focuses on clear service discovery, fast price estimation, trust signals and direct conversion into a service request.
+## UX features
 
-## 🚀 Features
+- 🇺🇦 / 🇬🇧 Ukrainian and English content
+- 💰 interactive price calculator
+- 🔀 tabbed service navigation
+- 📊 experience / trust presentation
+- 🧩 service cards with timing, warranty and actions
+- 📱 responsive desktop/tablet/mobile layout
+- 🎨 custom gradients, glow effects and inline SVG branding
+- ⚡ no framework and no build step
 
-- 🇺🇦 / 🇬🇧 **Ukrainian and English interface**
-- 💰 **Interactive price calculator** by service category and service type
-- 🔀 **Tabbed service navigation** between repair/accessories and tinting
-- 📊 **Trust and experience metrics** in the hero section
-- 🧩 **Service cards** with timing, warranty and action buttons
-- 📩 **Booking / service-request interactions**
-- 📱 **Responsive layout** for desktop, tablet and mobile
-- 🎨 Custom visual system with gradients, glow effects and an inline SVG brand mark
-- ⚡ No framework or build step required
-
-## 🛠 Tech stack
+## Tech stack
 
 | Area | Technology |
 |---|---|
 | Markup | HTML5 |
 | Styling | CSS3 |
 | Interactivity | Vanilla JavaScript |
-| Localization | Client-side UA / EN translations |
-| Fonts | Google Fonts — Outfit & Inter |
-| Deployment | Any static host |
+| Localization | Client-side UA / EN |
+| Fonts | Google Fonts |
+| Hosting | Any static host |
 
-## ▶️ Run locally
-
-Clone the repository:
+## Run locally
 
 ```bash
 git clone https://github.com/xondell/vadman.git
 cd vadman
-```
-
-Then either open `index.html` directly in a browser or serve the folder locally:
-
-```bash
 python3 -m http.server 8000
 ```
 
@@ -68,27 +65,29 @@ Open:
 http://localhost:8000
 ```
 
-## 📁 Repository structure
+You can also open `index.html` directly.
+
+## Repository structure
 
 ```text
 vadman/
-├── index.html   # Page structure, content, localization and interactions
-├── style.css    # Responsive layout and visual system
-└── README.md    # Project documentation
+├── index.html   # Content, structure, localization and interactions
+├── style.css    # Visual system / responsive layout
+└── README.md
 ```
 
-## 🎯 Product flow
+## Product flow
 
 ```text
-Discover services → Compare options → Estimate price → Choose service → Book / contact
+Discover services → Compare → Estimate price → Choose → Contact / book
 ```
 
-The experience is intentionally compact: visitors can understand the offer and reach a conversion action without navigating through a large multi-page site.
+The project is intentionally compact: visitors should understand the offer without navigating a large multi-page site.
 
 ---
 
 <div align="center">
 
-**Vadman — quality in the details, maximum protection.**
+**Vadman — a focused static site built around fast service discovery.**
 
 </div>
