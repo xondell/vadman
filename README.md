@@ -84,6 +84,12 @@ Discover services → Compare → Estimate price → Choose → Contact / book
 
 The project is intentionally compact: visitors should understand the offer without navigating a large multi-page site.
 
+## Editing and manual checks
+
+Content, translations, calculator logic and service switching are in [index.html](index.html); shared presentation is in [style.css](style.css). There is no dependency installation or application build step.
+
+After changes, review both languages, switch between the repair and window-tinting sections, exercise the price calculator, and check contact links and the narrow mobile layout. Preserve the existing service information when changing presentation.
+
 ---
 
 <div align="center">
